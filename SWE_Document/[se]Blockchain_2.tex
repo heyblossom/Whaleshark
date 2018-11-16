@@ -1,0 +1,325 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Block-Chain Applied Management System for Student Data: Enhancing Accessibility and Security \\
+}
+\author{\IEEEauthorblockN{Su Min Kim}
+\IEEEauthorblockA{\textit{dept. information system} \\
+\textit{Hanyang University}\\
+Seoul, Korea  \\
+smjy9502@naver.com}
+\and
+\IEEEauthorblockN{Chul Woo Park }
+\IEEEauthorblockA{\textit{dept. information system} \\
+\textit{Hanyang University}\\
+Seoul, Korea \\
+tthoutan@gmail.com}
+\and
+\IEEEauthorblockN{Jae Yeon Shin}
+\IEEEauthorblockA{\textit{dept. information system} \\
+\textit{Hanyang University}\\
+Seoul, Korea \\
+ jaeyeon.shin.96@gmail.com}
+\and
+\IEEEauthorblockN{Jong Won Oh}
+\IEEEauthorblockA{\textit{dept. information system} \\
+\textit{Hanyang University}\\
+Seoul, Korea \\
+jongwon9978@gmail.com}
+}
+\maketitle
+
+\begin{abstract}
+Blockchain is a decentralized transaction and data management technology developed first for Bitcoin cryptocurrency. In 2017, Blockchain based cryptocurrency has attracted the world’s attention as an investment asset. However in 2018, the industry is active with attempts to differentiate and improve efficiency by combining Blockchains with diverse businesses not only limited to cryptocurrency. Various fields, such as smart keys to control cars, automated payment systems, digital medical certifications, financial transaction history sharing and etc, have already adopted or planning to adopt Blockchain technology. The interest in Blockchain technology keeps increasing. The reason for the interest in Blockchain is its central attributes that provide security, anonymity and data integrity without any third party organization in control of the transactions. We propose Block-Chain Applied Management System for Student Data which can simplify current process of checking student data and assure reliability of data. We write student’s informations into ledger as one of transaction information. This transaction information then spread to nodes that are distributed in Blockchain network. By adopting distributed ledger technology, we can minimize time and cost that has been wasted and delete unnecessary procedure.
+\end{abstract}
+
+\begin{IEEEkeywords}
+blockchain, smart contract,  solidity, ethereum, software engineering, distributed ledger
+\end{IEEEkeywords}
+
+  \begin{table}[htbp]
+  \renewcommand{\arraystretch}{1.5}
+\caption{Role Assignments}
+\begin{center}
+\begin{tabular}{|p{2cm}|p{2cm}|p{3.5cm}|}
+\hline
+\textbf{Roles} & \textbf{\textit{Name}}& \textbf{\textit{Task description and etc.}} \\
+\hline
+User & Shin Jae Yeon &look for function that is needed, scheduling, test software\\
+\hline
+Customer & Kim Su Min & search for libraries, compare with other similar works, test software\\
+\hline
+Software developer& Park Chul Woo & develop based on requirements, improve software quality \\
+\hline
+Development Manager & Oh Jong Won & check requirements, specify design and customer's needs\\
+\hline
+\end{tabular}
+\label{tab1}
+\end{center}
+\end{table}
+
+\section{Introduction}
+A blockchain is essentially a distributed database of records or public ledger of all transactions or
+digital events that have been executed and shared among participating parties. Each transaction in
+the public ledger is verified by consensus of a majority of the participants in the system. And, once
+entered, information can never be erased. The blockchain contains a certain and verifiable record of
+every single transaction ever made. Bitcoin, the decentralized peer­-to-­peer digital currency, is the
+most popular example that uses blockchain technology. The digital currency bitcoin itself is highly
+controversial but the underlying blockchain technology has worked flawlessly and found wide range of
+applications in both financial and non-­financial world.
+
+The advantages of Blockchain technology outweigh the regulatory issues and technical challenges. One
+key emerging use case of blockchain technology involves “smart contracts”. Smart contracts are
+basically computer programs that can automatically execute the terms of a contract. When a
+pre-configured condition in a smart contract among participating entities is met then the parties
+involved in a contractual agreement can be automatically made payments as per the contract in a
+transparent manner.
+
+Blockchain technology is finding applications in wide range of both financial and non-financial areas. Financial institutions and banks no longer see blockchain technology as threat to traditional business models. The world’s biggest banks are in fact looking for opportunities in this area by doing research on innovative blockchain applications. In a recent interview Rain Lohmus of Estonia’s LHV bank told that they found Blockchain to be the most tested and secure for some banking and finance related applications. 
+
+Non-Financial applications opportunities are also endless. We can envision putting proof of existence of all legal documents, health records, and loyalty payments in the music industry, notary, private securities and marriage licenses in the blockchain. By storing the fingerprint of the digital asset instead of storing the digital asset itself, the anonymity or privacy objective can be achieved.
+
+In this paper, We propose Blockchain applied management system for student data, new system for inquiring and proving student certificate without complicated process. Our proposal can minimize time and cost that has been wasted.
+
+We focused on two main problems. First, complexity and needlessness of current system's process. Current inquiry and proof system of student data works as follows: the student's information can be checked on the server of the school and downloaded in the form of a document. In the downloaded document, the date of issuance and the identification number are provided to prove the validity of the document. However, after issuing the document, there is a problem that it is possible to manipulate the grades and the degree by using identification number and etc. Therefore, the scholarship foundations or companies that require the information such as students' grades, degree, enrollment information and etc inquiring information back to school again. 
+
+Second, security issue. Thanks to improved server security, it is extremely rare for a student to access a server and manipulate information such as grades, attendance and etc., but we could not say it is absolutely impossible.
+In addition, data can be lost if the server is attacked. This problem can arise because the server of the school storing the student's data is a single point of failure. In order to eliminate such a single point of failure, it can be solved through a strategy of duplicating or distributing duplicates or triplets. However, in order to take such a strategy, it takes a lot of costs such as security staff, security equipment and so on. 
+
+Our Blockchain applied management system for student data uses distributed ledger technology which is also a core concept of Blockchain. We intend to list the student's information (grades, proof of attendance, degrees, etc.) in the ledger as a single transaction information. The transaction information described above is propagated to a large number of nodes distributed in a Blockchain network through the characteristics of a Blockchain called a large distributed public ledger. Through this process, students' information on the Blockchain ledger is intended to be reliable enough information without any special evidence process. 
+
+The process by which the information recorded on the Blockchain records is obtained is as follows. The hash value of the transaction information is used as an input value in the calculation of the merklehash of the block containing the transaction, and the merklehash is used as the input value in the calculation of the block hash. The calculated block hash value is stored as the value of previousblockhash of the next block. Therefore, if any transaction information is changed, the merklehash of the merge tree containing the transaction information is changed and the block hash is changed as the value is changed. In this case, the value of previousblockhash of the block having the previous block as the block needs to be updated. In other words, to maintain the chain, the value of previousblockhash must be updated, the nonce value must be obtained again, and a new block hash must be obtained, and the value of the connected block hash must be newly calculated. In this way, all subsequent blocks must be re-mined from the block where the transaction information was changed. It takes an average of 10 minutes to mine a block, so if a malicious node changes the transaction information of the immediately preceding block, the good nodes continue to block the original block chain in which the transaction information has not been changed, so that after 10 minutes, the length of the bad chain of the malicious node becomes shorter than the length of the block chain held by the other good nodes And the shortest length (the block chain generated by the malicious node) is discarded at the moment when two block chains are encountered.(Due to the fact that, if a branching chain chain collides, more work proofs are performed to select blocks of longer length) By using structural characteristic of Blockchain, it can guarantee credibility just because it is written in distributed ledger in Blockchain. 
+
+As our final goal is to make students and the place where needs certificate comfortable. Just clicking our service can simplify lots of steps than before.
+
+The paper is organized as follows. Section 2 lists all the requirements. Section 3 discusses the related works. 
+
+\section{Requirements}
+
+\subsection{Blockchain Network environment}
+\begin{itemize}
+\item implement in cloud based environment by using Amazon Web Service
+\end{itemize}
+
+\subsection{Private Blockchain Network}
+\begin{itemize}
+\item implement private Blockchain network which can decide participation of node through central administrator
+\item use Java based Solidity 
+\item smart contract based on ethereum
+\end{itemize}
+
+\subsection{Web based application}
+\begin{itemize}
+\item place web based application on top of private blockchain platform where smart contract is built in
+\item user(student, school, enterprise HR department) can easily utilize service without knowing blockchain or certain language
+\item simply designed GUI
+\item reason for developing web based application is because most of authenticating student information works are done in web environment. 
+\item after web service is made, change to hybrid web to provide application service 
+\end{itemize}
+
+\subsection{Sign up function}
+\begin{itemize}
+\item send request to become a node
+\item can be signed up when central administrator give access to Blockchain network
+\item after get permission to join blockchain network, make ID and password
+\end{itemize}
+
+\subsection{Log-in function}
+\begin{itemize}
+\item log-in to system with ID and password that was made at sign up stage
+\item has function to find forgotten ID and password
+\item if log-in is successful, we can access to blockchain network and main page of our program
+\item if log-in fails for 5 times, we cannot get into network and also we need to get reauthentication.
+\end{itemize}
+
+\subsection{Main Page}
+\begin{itemize}
+\item section for grade certificate
+\item section for proof of enrollment
+\item section for certificate of degree
+\item have mypage section where we can change our personal data such as ID, password and etc.
+\end{itemize}
+
+\subsection{Section for grade certificate}
+\begin{itemize}
+\item inquire into grade information
+\item has print button to make copy of certificate
+\item has save button to download in document format file
+\end{itemize}
+
+\subsection{Section for proof of enrollment}
+\begin{itemize}
+\item inquire into enrollment information
+\item has print button to make copy of certificate
+\item has save button to download in document format file
+\end{itemize}
+
+\subsection{Section for certificate of degree}
+\begin{itemize}
+\item inquire into degree information
+\item has print button to make copy of certificate
+\item has save button to download in document format file
+\end{itemize}
+
+\subsection{My page}
+\begin{itemize}
+\item function to change password
+\item shown only when user is log-in 
+\end{itemize}
+
+
+\subsection{Composition of Blockchain network}
+\begin{itemize}
+\item central administrator: student service center in University
+\item node that store decentralized ledger that contains student informations: College of Engineering, College of Liberal Arts, College of Social Science, College of Business and etc.
+\item participants: students, enterprises HR manager (who wants to verify applicant's information), scholarship foundation (request student's grade information for state scholarship)
+\item as network is private, it doesn't need mining process which can have possibility to provide much faster speed
+\end{itemize}
+
+\subsection{Front-end}
+\begin{itemize}
+\item make it work well to get along with back-end server
+\item follow current portal system's design factor, but differentiate in GUI based on user's environment and experience 
+\item use HTML, CSS, JAVASCRIPT to design web page and get input and send it to server
+\end{itemize}
+
+\subsection{Back-end}
+\begin{itemize}
+\item use JAVASCRIPT to implement
+\item use web.js,api to make data connection between smart contract and web application
+\item web application server is built in cloud or in local by installing Node.js
+\end{itemize}
+
+\section{Related Works}
+As Blockchain technology has potential power, There are lots of attempts to adapt Blockchain technology in various fields. Especially, it can be applied as a replacement of current authentication method. There are several examples that are similar to our works. 
+
+\subsection{Chain SIGN}
+Chain SIGN is a first blockchain based contract platform made by blockchain platform specialized company 'TheRoof' and document management specialized company 'Cyberdime'. This is a new contract platform that assure trust by adding blockchain technology into original electronic contract system. It can have same effect with notarization in current electronic contract.
+
+\subsection{EduCTX}
+This platform is based on the concept of the EuropeanCredit Transfer and Accumulation System (ECTS). It constitutes a globally trusted, decentralized higher education credit, and grading system that can offer a globally unified viewpoint for students and higher education institutions (HEIs), as well as for other potential stakeholders, such as companies, institutions, and organizations. As a proof of concept, they present a prototype implementation of the environment, based on the open-source Ark Blockchain Platform. Based on a globally distributed peer-to-peer network, EduCTX will process, manage, and control ECTX tokens, which represent credits that students gain for completed courses, such as ECTS. HEIs are the peers of the blockchain network. The platform is a first step toward amore transparent and technologically advanced form of higher education systems. The EduCTX platform represents the basis of the EduCTX initiative, which anticipates that various HEIs would join forces in order to create a globally efficient, simplified, and ubiquitous environment in order to avoid language and administrative barriers
+
+\subsection{New Blockchain Management System for Student Learning Data Developed by Sony}
+Sony Corporation and Sony Global Education, a Sony subsidiary focused on global educational services, has developed a new platform for student education records based on Blockchain technology. The new solution will allow school administrators to consolidate and manage educational data for students in several schools, as well as record and refer to their learning history and digital transcripts with greater certainty. It will be developed with IBM Blockchain, and will use blockchain technology running on the IBM Cloud to track students’ learning progress, as well as to establish transparency and accountability of school achievement among students and schools. The platform will provide students with a digital and reliable record of their achievements that can be easily and quickly verified by any future employer or educational institutions. The data recorded on the platform is verified using IBM Blockchain and can be shared with stakeholders, including school administrators and prospective employers.
+
+\subsection{MEDIBLOC}
+MEDIBLOC is a project to solve current medical information system by using blockchain technology. It returns medical information that has been spread through each medical center. MEDIBLOC's goal is to create a world where individuals, medical providers, and medical researchers all enjoy a new medical experience by ensuring that medical information is securely distributed around individuals.
+
+\subsection{CHAIN ID}
+CHAIN ID issues a joint certificate through the consensus of the nodes (participants) in the network. The joint certificate is already authenticated through the consensus of the nodes and can be used freely throughout the network without any additional authentication. The smart contracts will guarantee the integrity of the data, ensuring that the certificate is trustworthy and without the risk of being altered. The information and status of the certificate is shared among the nodes in real-time so that all the participants will have the same information. By all the nodes having the same data, CHAIN ID can prevent single points of failure, such as hacking attempts that may happen in centralized network environments. Using CHAIN ID, users can experience a more convenient and reliable environment for making financial transactions.
+
+\subsection{BankSign}
+Customers who use Bank Sign can obtain a joint certificate from one bank, and they can easily use the mobile banking service of the other bank with simple authentication. The customer renewed the certificate every year when using the bank service and had to go through the registration and authentication process for each bank. However, Bank Sign makes it easy to access banking services from multiple banks at once. The authentication method has also been improved with convenience passwords, fingerprints, and patterns. The Bank Sign prevents the forgery of the certificate through the distributed agreement, which is a characteristic of the blockchain, and the synchronization of real-time authentication information between the banks. In addition to security, the block hain has increased security by encrypting communication segments and double-encrypting data and networks. This enhanced security has increased the validity period of the joint certificate from one year to three years.
+
+\section{Development Environment}
+\subsection{Choice of development platform}
+\begin{enumerate} [font=\itshape]
+  \item \textit{Platform used for developing: }We will going to use Mac OS and Linux OS. Even thought Windows is still dominant in OS area, still Mac OS is a popular choice since lots of people prefer using Mac. We will not only use Mac OS but also we will use linux by using Amazon Linux AMI2. It is a Linux image that helps Amazon Web Services to be used in Amazon Elastic Compute Cloud(Amazon EC2). It is built to provide highly efficient execution environment to applications that is executing in Amazon EC2. It supports EC2 instances function and contains packages that can integrate with AWS.\\
+  
+   \item \textit{Programming language used for developing: }We are using various kinds of languages. For building private blockchain, we use Go language to build chaincode which is made by IBM. For Web Frontend, we use HTML, CSS, JAVASCRIPT and React. For Web backend, we use node.js (WAS), MySQL (Web DB) and nginx for server. Lastly for network, we used CloudFront CDN. 
+   
+  \item \textit{Cost estimation (Software): } 
+  \begin{table}[htbp]
+  \renewcommand{\arraystretch}{1.5}
+\caption{Cost estimation}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{4.7cm}|}
+\hline
+\textbf{Software         } & \textbf{Task description        } \\
+\hline
+Github & Remote repository \\
+\hline
+Sublime text & Text editor \\
+\hline
+Mac OS & Operating System \\
+\hline
+Amazon AWS  & Cloud service \\
+\hline
+Clound Front CDN & Content Delivery Network \\
+\hline
+ Mockflow & Wire frame tools \\
+\hline
+IBM Hyperledger 1.0 & Opensource blockchain project \\
+\hline
+Total & 0 \\
+\hline
+\end{tabular}
+\label{tab1}
+\end{center}
+\end{table}
+\end{enumerate}
+
+\subsection{Software in use}
+\begin{enumerate} [font=\itshape]
+  \item \textit{Github: } It is a web-based hosting service for version control using Git. It is mostly used for computer code. It offers all of the distributed version control and source code management (SCM) functionality of Git as well as adding its own features. It provides access control and several collaboration features such as bug tracking, feature requests, task management, and wikis for every project.\\
+   \item \textit{Amazon EC2: } It forms a central part of Amazon.com's cloud-computing platform, Amazon Web Services (AWS), by allowing users to rent virtual computers on which to run their own computer applications. EC2 encourages scalable deployment of applications by providing a web service through which a user can boot an Amazon Machine Image (AMI) to configure a virtual machine, which Amazon calls an "instance", containing any software desired. A user can create, launch, and terminate server-instances as needed, paying by the second for active servers – hence the term "elastic". EC2 provides users with control over the geographical location of instances that allows for latency optimization and high levels of redundancy. \\
+   \item \textit{DBMS: }It is the software that interacts with end users, applications, the database itself to capture and analyze the data and provides facilities to administer the database. The sum total of the database, the DBMS and the associated applications can be referred to as a "database system". Often the term "database" is also used to loosely refer to any of the DBMS, the database system or an application associated with the database.\\
+   \item \textit{Sublime text: } It is a proprietary cross-platform source code editor with a Python application programming interface (API). It natively supports many programming languages and markup languages, and functions can be added by users with plugins, typically community-built and maintained under free-software licenses.\\
+   \item \textit{IBM Hyperledger Fabric 1.0: }It is a blockchain framework implementation and one of the Hyperledger projects hosted by The Linux Foundation. Intended as a foundation for developing applications or solutions with a modular architecture, Hyperledger Fabric allows components, such as consensus and membership services, to be plug-and-play. Hyperledger Fabric leverages container technology to host smart contracts called “chaincode” that comprise the application logic of the system. Hyperledger Fabric was initially contributed by Digital Asset and IBM, as a result of the first hackathon.
+\end{enumerate}
+
+\subsection{Task distribution}
+  \begin{table}[htbp]
+  \renewcommand{\arraystretch}{1.5}
+\caption{Task distribution}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{4.7cm}|}
+\hline
+\textbf{Software} & \textbf{Task description} \\
+\hline
+Kim Su Min & Web Frontend(Bootstrap), blockchain programming, documentation \\
+\hline
+Park Chul Woo & Network, blockchain programming \\
+\hline
+Shin Jae Yeon&Web backend(DB), blockchain programming, documentation \\
+\hline
+Oh Jong Won  & Web backend, blockchain programming, design \\
+\hline
+\end{tabular}
+\label{tab1}
+\end{center}
+\end{table}
+
+\section{Specification}
+
+\begin{enumerate}
+	\item \textit First Page
+    \begin{enumerate}
+    	\item Login: The student can log in by linking the information of Hanyang portal and the student will be logged in if they select student, school or company, enter their ID and password, and go to the main page when the entered information matches.\\
+        \item ID/PW search: If the student loses his / her ID and password, he / she can find the information. In case of existing Hy-in portal account, ID can be confirmed by searching mobile phone or I-pin authentication. In case of password search, it is possible to search by inputting cell phone or I-pin authentication and ID information. The ID password retrieval function that we want to create will work the same way.\\
+    \end{enumerate}
+    \item \textit Main Page
+    \begin{enumerate}
+    	\item Custom design: Students can choose their preferred design. You can choose the color and theme of the main page. Also, when you add a favorite menu to your favorites, the icon of that menu is displayed on the main page. Through this, the user experience is emphasized and an interface according to the user's preference is provided.\\
+        \item Search Bar: Students with little experience may have difficulty knowing what menu is and knowing the path to the feature. In order to help such students, it is a service that searches for a specific menu by entering a keyword corresponding to that menu. This makes it possible to efficiently use the authentication homepage even if the user does not know the site movement route.\\
+    \end{enumerate}
+    \item \textit Portfolio management page\\
+    Many companies are asking for photocopies when they are employed. A variety of information such as the date and time of the activity, and the supporting documents should be submitted to the portfolios, which can be troublesome. It is a page that can manage this efficiently. It is to provide will a variety of information, including the date and time of the activity, the activity history, and the supporting documents, and the school will certify the activity so that when the student submits it, It is possible to not submit the additional papers.\\
+    You can also configure your portfolio by selecting the activity you have entered so that students can create their own portfolio in accordance with different enterprise-specific requirements.\\
+    \begin{enumerate}
+    	\item Extracurricular activity: In the case of external activities, the primary certification at the school can alleviate the cumbersome process by which an individual has to prove his or her activities to the company. The student can enter the activity record by attaching the activity name, activity period, activity contents, supporting documents, and the school certifies the activity if the information entered by the student is sufficient.\\
+        \item Volunteer works: Volunteer work can also be a primary certification at the school, which can alleviate the cumbersome process by which an individual must demonstrate his / her service. The student can enter the activity record by attaching the name of the activity, date, time, and supporting documents. The school certifies the activity if the information entered by the student is sufficient.\\
+         \item Club activity: In the case of club activities, it is difficult to prove the activity because there is no specific supporting document such as a certificate. Also, if the club is disbanded, there is no way to prove the activity. In order to solve these problems, the student enters the club activities, activity period, activity contents, and the school confirms the club activities by confirming the existence of the club and the list of clubs. Through this, we can prove the career of a student's club activities\\
+          \item Certificate: In the case of certification, it is difficult for students to certify each certificate while preparing for employment, for example, organizing sponsors difference and knowing clearly the period of acquisition. To prevent this, the school enters the credentials, the outline of the certificate, the date of acquisition, the supporting number, etc., and the school confirms and confirms this information. This can prove the student's credentials\\
+    \end{enumerate}
+       \item \textit School certificate page\\
+        In the case of the documents to be verified at the school, it has to be submitted to the company after printing, and the company has had a cumbersome process to confirm the authenticity of the documents to the school. In order to solve this cumbersome procedure, after constructing a private block chain, the company can guarantee the authenticity of the corresponding document and the security of transmission by submitting the certificate to the company participating in the block chain in the same manner as the smart contract.\\
+    \begin{enumerate}
+    	\item Check and Print: You can view and print various certificates that the school certifies. If the student does not participate in the private block chain operated by the school, the menu is needed because the student can not transmit using the transmission menu on the site. The student can select the required certificate and print it out.\\
+        \item Submit: You can submit a certificate of your students to an institution participating in a private block chain run by the school. The student can select a company to send after selecting the certificate to submit. A list of selectable companies is displayed. For companies not on the list, companies that do not participate in the private block chain should use check and print section to print and submit the relevant certificate. After the student selects the certificate and company and presses the submit button, the student is approved and sent to the company. In the case of transmission status, it can be confirmed from the information status of the schedule menu.
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
