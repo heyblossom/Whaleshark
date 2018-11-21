@@ -1,0 +1,63 @@
+\documentclass[twoside,onecolumn,11pt,a4paper]{book}
+\usepackage{anuthesis}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+  \renewcommand{\bottomfraction}{0.7}  
+
+\begin{document}
+
+\pagenumbering{roman}  % first use Roman numerals for page numbers
+
+\begin{titlepage}
+\title{\textbf{A Simple Example of a Latex Thesis}\\[2cm]}
+ \author{\textbf{Mickey M. Mouse}\\[6cm]
+ \textbf{A thesis submitted for the degree of}\\
+ \textbf{Bachelor of Science with Honours in Physics of} \\
+ \textbf{The Australian National University}\\[1cm]}
+ \date{\textbf{October, 2004}}
+\maketitle
+ \end{titlepage}
+ 
+ \sloppy
+ 
+\chapter*{Declaration}
+\addcontentsline{toc}{chapter}{Declaration}
+
+This thesis is an account of research undertaken between February 2004 and 
+October 2004 at The Department of Physics, Faculty of Science, 
+The Australian National University, Canberra, Australia.
+
+Except where acknowledged in the customary manner, the material 
+presented in this thesis is, to the best of my knowledge, original and 
+has not been submitted in whole or part for a degree in any 
+university.
+
+\vspace{20mm}  % vertical space
+
+\hspace{80mm}\rule{40mm}{.15mm}\par   % horizontal space, line, start new line
+\hspace{80mm} Mickey M. Mouse\par
+\hspace{80mm} October, 2004
+
+% include statements effectively insert the contents of the named file.
+% They are not necessary, but are useful for organising your work.
+% They always start a  new page.
+
+\include{thanks}  % include the contents of the file thanks.tex
+
+\include{abstract}  % include the file abstract.tex
+
+\tableofcontents
+\listoffigures % makes a list of figures
+%\listoftables  % uncomment this if you have tables
+
+\pagenumbering{arabic} % switch to Arabic numerals for page numbers
+\setcounter{page}{1}  % set page number to 1
+
+\include{chapter1}  % include the file chapter1.tex
+
+\include{chapter2} % include the file chapter2.tex
+
+\include{MyBibliography}  % include the file MyBibliography.tex
+
+\end{document}
