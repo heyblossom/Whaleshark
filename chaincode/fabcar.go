@@ -44,10 +44,14 @@ type SmartContract struct {
 
 // Define the car structure, with 4 properties.  Structure tags are used by encoding/json library
 type Student struct {
-	Name   string `json:"name"`
-	GPA  string `json:"gpa"`
-	Number string `json:"number"`
-	Major  string `json:"major"`
+	Dept string `json:"dept"`
+	Name string `json:"name"`
+	Grade string `json:"grade"`
+	Credit string `json:"credit"`
+  UserNumber string `json:"userNumber"`
+  Category string `json:"category"`
+  State string `json:"state"`
+  Date string `json:"date"`
 }
 
 /*
@@ -94,18 +98,14 @@ func (s *SmartContract) queryStudent(APIstub shim.ChaincodeStubInterface, args [
 
 func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Response {
 	students := []Student{
-		Student{Name: "ParkChulWoo", GPA: "4.5", Number: "2014005450", Major: "InformationSystem"},
-		Student{Name: "OhJongWon", GPA: "3.0", Number: "2014005515", Major: "InformationSystem"},
-    Student{Name: "ShinJaeYeon", GPA: "4.5", Number: "2015005450", Major: "InformationSystem"},
-    Student{Name: "KimSuMin", GPA: "4.5", Number: "2014002450", Major: "InformationSystem"},
-    Student{Name: "HaDongSu", GPA: "4.5", Number: "2014003450", Major: "InformationSystem"},
+    Student{Dept: "InformationSystem", Name: "ParkChulWoo", Grade: "4.5,4.5,4.5,4.5", Credit: "19,20,18,17", UserNumber: "2014005450", Category: "chk2", State: "enrolled", Date: "2018-10-10"},
 	}
 
 	i := 0
 	for i < len(students) {
 		fmt.Println("i is ", i)
 		studentAsBytes, _ := json.Marshal(students[i])
-		APIstub.PutState("STUDENT"+strconv.Itoa(i), studentAsBytes)
+		APIstub.PutState(strconv.Itoa(i), studentAsBytes)
 		fmt.Println("Added", students[i])
 		i = i + 1
 	}
@@ -115,11 +115,11 @@ func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Respo
 
 func (s *SmartContract) createStudent(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 5 {
-		return shim.Error("Incorrect number of arguments. Expecting 5")
+	if len(args) != 9 {
+		return shim.Error("Incorrect number of arguments. Expecting 9")
 	}
 
-	var student = Student{Name: args[1], GPA: args[2], Number: args[3], Major: args[4]}
+  var student = Student{Dept: args[1], Name: args[2], Grade: args[3], Credit: args[4], UserNumber: args[5], Category: args[6], State: args[7], Date: args[8]}
 
 	studentAsBytes, _ := json.Marshal(student)
 	APIstub.PutState(args[0], studentAsBytes)
@@ -129,8 +129,8 @@ func (s *SmartContract) createStudent(APIstub shim.ChaincodeStubInterface, args 
 
 func (s *SmartContract) queryAllStudents(APIstub shim.ChaincodeStubInterface) sc.Response {
 
-	startKey := "STUDENT0"
-	endKey := "STUDENT999"
+	startKey := "0"
+	endKey := "999"
 
 	resultsIterator, err := APIstub.GetStateByRange(startKey, endKey)
 	if err != nil {
@@ -180,7 +180,7 @@ func (s *SmartContract) changeStudentMajor(APIstub shim.ChaincodeStubInterface, 
 	student := Student{}
 
 	json.Unmarshal(studentAsBytes, &student)
-	student.Major = args[1]
+	student.Dept = args[1]
 
 	studentAsBytes, _ = json.Marshal(student)
 	APIstub.PutState(args[0], studentAsBytes)
